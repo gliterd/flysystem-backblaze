@@ -25,12 +25,12 @@
     },
     "autoload": {
         "psr-4": {
-            "mhetreramesh\\flysystem\backblaze\\": "src"
+            "Mhetreramesh\\Flysystem\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "mhetreramesh\\flysystem-backblaze\\": "tests"
+            "Mhetreramesh\\Flysystem\\Tests\\": "tests"
         }
     },
     "scripts": {

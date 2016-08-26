@@ -1,6 +1,6 @@
 <?php
 
-namespace Mhetreramesh\Flysystem\BackblazeAdapter;
+namespace Mhetreramesh\Flysystem;
 
 use ChrisWhite\B2\Client;
 use League\Flysystem\Adapter\AbstractAdapter;
