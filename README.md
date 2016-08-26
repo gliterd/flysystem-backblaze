@@ -20,8 +20,14 @@ $ composer require mhetreramesh/flysystem-backblaze
 ## Usage
 
 ``` php
-$skeleton = new League\Skeleton();
-echo $skeleton->echoPhrase('Hello, League!');
+use Mhetreramesh\Flysystem\BackblazeAdapter;
+use League\Flysystem\Filesystem;
+use ChrisWhite\B2\Client;
+
+$client = new Client($accountId, $applicationKey);
+$adapter = new BackblazeAdapter($client);
+
+$filesystem = new Filesystem($adapter);
 ```
 
 ## Change log
