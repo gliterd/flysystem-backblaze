@@ -25,22 +25,17 @@
     },
     "autoload": {
         "psr-4": {
-            "mhetreramesh\\flysystem\backblaze\\": "src"
+            "Mhetreramesh\\Flysystem\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "mhetreramesh\\flysystem-backblaze\\": "tests"
+            "Mhetreramesh\\Flysystem\\Tests\\": "tests"
         }
     },
     "scripts": {
         "test": "phpunit",
         "format": "phpcbf --standard=psr2 src/"
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "1.0-dev"
-        }
     },
     "config": {
         "sort-packages": true
