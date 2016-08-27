@@ -31,4 +31,3 @@ tools:
         excluded_dirs: []
     php_cpd:
         enabled: true
-excluded_dirs: []
