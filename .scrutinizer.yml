@@ -28,6 +28,5 @@ tools:
             paths: ['src']
     php_loc:
         enabled: true
-        excluded_dirs: []
     php_cpd:
         enabled: true
