@@ -187,7 +187,7 @@ class BackblazeAdapter extends AbstractAdapter {
             'BucketName' => $this->bucketName,
         ]);
         $result = [];
-        foreach($fileObjects as $fileObject) {
+        foreach ($fileObjects as $fileObject) {
             $result[] = $this->getFileInfo($fileObject);
         }
         return $result;
