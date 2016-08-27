@@ -1,11 +1,12 @@
 # flysystem-backblaze
 
-[![Latest Version on Packagist][ico-version]][link-packagist]
+[![Author](http://img.shields.io/badge/author-@mhetreramesh-blue.svg?style=flat-square)](https://twitter.com/mhetreramesh)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/mhetreramesh/flysystem-backblaze.svg?style=flat-square)](https://packagist.org/packages/mhetreramesh/flysystem-backblaze)
 [![Software License][ico-license]](LICENSE.md)
-[![Build Status][ico-travis]][link-travis]
+[![Build Status](https://img.shields.io/travis/mhetreramesh/flysystem-backblaze/master.svg?style=flat-square)](https://travis-ci.org/mhetreramesh/flysystem-backblaze)
 [![Coverage Status][ico-scrutinizer]][link-scrutinizer]
 [![Quality Score][ico-code-quality]][link-code-quality]
-[![Total Downloads][ico-downloads]][link-downloads]
+[![Total Downloads](https://img.shields.io/packagist/dt/mhetreramesh/flysystem-backblaze.svg?style=flat-square)](https://packagist.org/packages/mhetreramesh/flysystem-backblaze)
 
 The Backblaze adapter gives the possibility to use the Flysystem filesystem abstraction library with backblaze. It uses the [Backblaze B2 SDK](https://github.com/cwhite92/b2-sdk-php) to communicate with the API.
 
@@ -57,17 +58,17 @@ If you discover any security related issues, please email mhetreramesh@gmail.com
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
-[ico-version]: https://img.shields.io/packagist/v/mhetreramesh/flysystem-backblaze .svg?style=flat-square
+[ico-version]: https://img.shields.io/packagist/v/mhetreramesh/flysystem-backblaze.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
-[ico-travis]: https://img.shields.io/travis/mhetreramesh/flysystem-backblaze /master.svg?style=flat-square
-[ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/mhetreramesh/flysystem-backblaze .svg?style=flat-square
-[ico-code-quality]: https://img.shields.io/scrutinizer/g/mhetreramesh/flysystem-backblaze .svg?style=flat-square
-[ico-downloads]: https://img.shields.io/packagist/dt/mhetreramesh/flysystem-backblaze .svg?style=flat-square
+[ico-travis]: https://img.shields.io/travis/mhetreramesh/flysystem-backblaze/master.svg?style=flat-square
+[ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/mhetreramesh/flysystem-backblaze.svg?style=flat-square
+[ico-code-quality]: https://img.shields.io/scrutinizer/g/mhetreramesh/flysystem-backblaze.svg?style=flat-square
+[ico-downloads]: https://img.shields.io/packagist/dt/mhetreramesh/flysystem-backblaze.svg?style=flat-square
 
-[link-packagist]: https://packagist.org/packages/mhetreramesh/flysystem-backblaze 
-[link-travis]: https://travis-ci.org/mhetreramesh/flysystem-backblaze 
-[link-scrutinizer]: https://scrutinizer-ci.com/g/mhetreramesh/flysystem-backblaze /code-structure
-[link-code-quality]: https://scrutinizer-ci.com/g/mhetreramesh/flysystem-backblaze 
-[link-downloads]: https://packagist.org/packages/mhetreramesh/flysystem-backblaze 
+[link-packagist]: https://packagist.org/packages/mhetreramesh/flysystem-backblaze
+[link-travis]: https://travis-ci.org/mhetreramesh/flysystem-backblaze
+[link-scrutinizer]: https://scrutinizer-ci.com/g/mhetreramesh/flysystem-backblaze/code-structure
+[link-code-quality]: https://scrutinizer-ci.com/g/mhetreramesh/flysystem-backblaze
+[link-downloads]: https://packagist.org/packages/mhetreramesh/flysystem-backblaze
 [link-author]: https://github.com/mhetreramesh
 [link-contributors]: ../../contributors
