@@ -8,6 +8,8 @@
 [![Quality Score][ico-code-quality]][link-code-quality]
 [![Total Downloads](https://img.shields.io/packagist/dt/mhetreramesh/flysystem-backblaze.svg?style=flat-square)](https://packagist.org/packages/mhetreramesh/flysystem-backblaze)
 
+Visit (https://secure.backblaze.com/b2_buckets.htm) and get your account id, application key.
+
 The Backblaze adapter gives the possibility to use the Flysystem filesystem abstraction library with backblaze. It uses the [Backblaze B2 SDK](https://github.com/cwhite92/b2-sdk-php) to communicate with the API.
 
 ## Install
