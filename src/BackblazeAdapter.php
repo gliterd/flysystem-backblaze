@@ -86,7 +86,7 @@ class BackblazeAdapter extends AbstractAdapter {
      */
     public function read($path)
     {
-        echo 'read'; die;
+        return false;
     }
 
     /**
@@ -94,7 +94,7 @@ class BackblazeAdapter extends AbstractAdapter {
      */
     public function readStream($path)
     {
-        echo ''; die;
+        return false;
     }
 
     /**
@@ -102,7 +102,7 @@ class BackblazeAdapter extends AbstractAdapter {
      */
     public function rename($path, $newpath)
     {
-        echo 'rename'; die;
+        return false;
     }
 
     /**
@@ -140,7 +140,8 @@ class BackblazeAdapter extends AbstractAdapter {
     {
         return $this->getClient()->upload([
             'BucketName' => $this->bucketName,
-            'FileName' => $path
+            'FileName' => $path,
+            'Body' => ''
         ]);
     }
 
@@ -149,7 +150,7 @@ class BackblazeAdapter extends AbstractAdapter {
      */
     public function getMetadata($path)
     {
-        echo 'getMetadata'; die;
+        return false;
     }
 
     /**
@@ -157,7 +158,7 @@ class BackblazeAdapter extends AbstractAdapter {
      */
     public function getMimetype($path)
     {
-        echo 'getMimetype'; die;
+        return false;
     }
 
     /**
