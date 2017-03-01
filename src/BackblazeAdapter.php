@@ -60,7 +60,12 @@ class BackblazeAdapter extends AbstractAdapter {
      */
     public function update($path, $contents, Config $config)
     {
-        echo 'update'; die;
+        $file = $this->getClient()->upload([
+            'BucketName' => $this->bucketName,
+            'FileName' => $path,
+            'Body' => $contents
+        ]);
+        return $this->getFileInfo($file);
     }
 
     /**
@@ -68,7 +73,12 @@ class BackblazeAdapter extends AbstractAdapter {
      */
     public function updateStream($path, $resource, Config $config)
     {
-        echo 'updateStream'; die;
+        $file = $this->getClient()->upload([
+            'BucketName' => $this->bucketName,
+            'FileName' => $path,
+            'Body' => $resource
+        ]);
+        return $this->getFileInfo($file);
     }
 
     /**
