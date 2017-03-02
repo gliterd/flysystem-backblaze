@@ -7,6 +7,22 @@ use \League\Flysystem\Config;
 
 class BackblazeAdapterTests extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var vfsStreamDirectory
+     */
+    private $fs_mock;
+
+    /**
+     * @var vfsStreamFile
+     */
+    private $file_mock;
+
+    private function fileSetUp() {
+        $this->fs_mock = \org\bovigo\vfs\vfsStream::setup();
+        $this->file_mock = new \org\bovigo\vfs\vfsStreamFile('filename.ext');
+        $this->fs_mock->addChild($this->file_mock);
+    }
+
     public function backblazeProvider()
     {
         $mock = $this->prophesize('ChrisWhite\B2\Client');
@@ -71,5 +87,66 @@ class BackblazeAdapterTests extends PHPUnit_Framework_TestCase
         $this->assertInternalType('array', $result);
         $this->assertArrayHasKey('type', $result);
         $this->assertEquals('file', $result['type']);
+    }
+
+    /**
+     * @dataProvider  backblazeProvider
+     */
+    public function testRead($adapter, $mock)
+    {
+        //$mock->fileExists(["BucketName" => "my_bucket", "FileName" => "something"])->willReturn(true);
+        $result = $adapter->read('something');
+        $this->assertFalse($result);
+    }
+
+    /**
+     * @dataProvider  backblazeProvider
+     */
+    public function testReadStream($adapter, $mock)
+    {
+        //$mock->fileExists(["BucketName" => "my_bucket", "FileName" => "something"])->willReturn(true);
+        $result = $adapter->readStream('something');
+        $this->assertFalse($result);
+    }
+
+    /**
+     * @dataProvider  backblazeProvider
+     */
+    public function testRename($adapter, $mock)
+    {
+        //$mock->fileExists(["BucketName" => "my_bucket", "FileName" => "something"])->willReturn(true);
+        $result = $adapter->rename('something', 'something_new');
+        $this->assertFalse($result);
+    }
+
+    /**
+     * @dataProvider  backblazeProvider
+     */
+    public function testGetMetaData($adapter, $mock)
+    {
+        //$mock->fileExists(["BucketName" => "my_bucket", "FileName" => "something"])->willReturn(true);
+        $result = $adapter->getMetadata('something');
+        $this->assertFalse($result);
+    }
+
+    /**
+     * @dataProvider  backblazeProvider
+     */
+    public function testGetMimetype($adapter, $mock)
+    {
+        //$mock->fileExists(["BucketName" => "my_bucket", "FileName" => "something"])->willReturn(true);
+        $result = $adapter->getMimetype('something');
+        $this->assertFalse($result);
+    }
+
+    /**
+     * @dataProvider  backblazeProvider
+     */
+    public function testCopy($adapter, $mock)
+    {
+        $this->fileSetUp();
+        $mock->upload(["BucketName" => "my_bucket", "FileName" => "something_new", "Body" => ""])->willReturn(new File('something_new','','','',''), false);
+        $result = $adapter->copy($this->file_mock->url(), 'something_new');
+        $this->assertObjectHasAttribute('id', $result, 'something_new');
     }
 }
