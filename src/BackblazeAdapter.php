@@ -86,7 +86,14 @@ class BackblazeAdapter extends AbstractAdapter {
      */
     public function read($path)
     {
-        return false;
+        $file = $this->getClient()->getFile([
+            'BucketName' => $this->bucketName,
+            'FileName' => $path
+        ]);
+        $fileContent = $this->getClient()->download([
+            'FileId' => $file->getId()
+        ]);
+        return ['contents' => $fileContent];
     }
 
     /**
