@@ -94,9 +94,11 @@ class BackblazeAdapterTests extends PHPUnit_Framework_TestCase
      */
     public function testRead($adapter, $mock)
     {
-        $mock->fileExists(["BucketName" => "my_bucket", "FileName" => "something", "FileId" => "something"])->willReturn(true);
+        $file = new File('something','something4','','','','','my_bucket');
+        $mock->getFile(["BucketName" => "my_bucket", "FileName" => "something"])->willReturn($file, false);
+        $mock->download(["FileId" => "something"])->willReturn($file, false);
         $result = $adapter->read('something');
-        $this->assertFalse($result);
+        $this->assertEquals(['contents' => $file], $result);
     }
 
     /**
