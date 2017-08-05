@@ -6,6 +6,7 @@ use ChrisWhite\B2\Client;
 use League\Flysystem\Adapter\AbstractAdapter;
 use League\Flysystem\Adapter\Polyfill\NotSupportingVisibilityTrait;
 use League\Flysystem\Config;
+use GuzzleHttp\Psr7;
 
 class BackblazeAdapter extends AbstractAdapter {
 
@@ -101,7 +102,19 @@ class BackblazeAdapter extends AbstractAdapter {
      */
     public function readStream($path)
     {
-        return false;
+        $stream = Psr7\stream_for();
+        $download = $this->getClient()->download([
+            'BucketName' => $this->bucketName,
+            'FileName' => $path,
+            'SaveAs' => $stream,
+        ]);
+        $stream->seek(0);
+        try {
+            $resource = Psr7\StreamWrapper::getResource($stream);
+        } catch (InvalidArgumentException $e) {
+            return false;
+        }
+        return $download === true ? ['stream' => $resource] : false;
     }
 
     /**

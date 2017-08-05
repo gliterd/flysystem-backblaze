@@ -17,6 +17,7 @@
         "php": ">=5.5.0",
         "league/flysystem": "~1.0",
         "cwhite92/b2-sdk-php" : "^1.2",
+        "psr/http-message-implementation": "*",
         "mikey179/vfsStream" : "*"
     },
     "require-dev": {
