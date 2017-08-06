@@ -151,4 +151,45 @@ class BackblazeAdapterTests extends PHPUnit_Framework_TestCase
         $result = $adapter->copy($this->file_mock->url(), 'something_new');
         $this->assertObjectHasAttribute('id', $result, 'something_new');
     }
+
+    /**
+     * @dataProvider  backblazeProvider
+     */
+    public function testListContents($adapter, $mock)
+    {
+        $mock->listFiles(["BucketName" => "my_bucket"])->willReturn([new File('random_id', 'file1.txt'), new File('random_id', 'some_folder/file2.txt'), new File('random_id', 'some_folder/another_folder/file3.txt')]);
+        $normalized_files = [
+            [
+                'type' => 'file',
+                'path' => 'file1.txt',
+                'timestamp' => false,
+                'size' => NULL,
+            ],
+            [
+                'type' => 'file',
+                'path' => 'some_folder/file2.txt',
+                'timestamp' => false,
+                'size' => NULL,
+            ],
+            [
+                'type' => 'file',
+                'path' => 'some_folder/another_folder/file3.txt',
+                'timestamp' => false,
+                'size' => NULL,
+            ],
+        ];
+        $result1 = $adapter->listContents('', false);
+        $this->assertEquals([$normalized_files[0]], $result1);
+        $result2 = $adapter->listContents('some_folder', false);
+        $this->assertEquals([$normalized_files[1]], $result2);
+        $result3 = $adapter->listContents('', true);
+        $this->assertEquals($normalized_files, $result3);
+        $result3 = $adapter->listContents('some_folder', true);
+        $this->assertEquals([$normalized_files[1], $normalized_files[2]], $result3);
+
+        $this->expectException(\InvalidArgumentException::class);
+        $adapter->listContents(false, false);
+        $adapter->listContents(false, 'haha');
+        $adapter->listContents('', 'haha');
+    }
 }
