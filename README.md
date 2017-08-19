@@ -28,7 +28,7 @@ use League\Flysystem\Filesystem;
 use ChrisWhite\B2\Client;
 
 $client = new Client($accountId, $applicationKey);
-$adapter = new BackblazeAdapter($client);
+$adapter = new BackblazeAdapter($client,$bucketName);
 
 $filesystem = new Filesystem($adapter);
 ```
