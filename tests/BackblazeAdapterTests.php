@@ -1,8 +1,8 @@
 <?php
 
-use ChrisWhite\B2\Client;
+use BackblazeB2\Client;
 use Mhetreramesh\Flysystem\BackblazeAdapter as Backblaze;
-use \ChrisWhite\B2\File;
+use BackblazeB2\File;
 use \League\Flysystem\Config;
 
 class BackblazeAdapterTests extends PHPUnit_Framework_TestCase
@@ -25,7 +25,7 @@ class BackblazeAdapterTests extends PHPUnit_Framework_TestCase
 
     public function backblazeProvider()
     {
-        $mock = $this->prophesize('ChrisWhite\B2\Client');
+        $mock = $this->prophesize('BackblazeB2\Client');
         return [
             [new Backblaze($mock->reveal(), 'my_bucket'), $mock],
         ];
