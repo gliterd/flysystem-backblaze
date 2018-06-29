@@ -2,7 +2,7 @@
 
 namespace Mhetreramesh\Flysystem;
 
-use ChrisWhite\B2\Client;
+use BackblazeB2\Client;
 use League\Flysystem\Adapter\AbstractAdapter;
 use League\Flysystem\Adapter\Polyfill\NotSupportingVisibilityTrait;
 use League\Flysystem\Config;
