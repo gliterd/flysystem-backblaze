@@ -32,6 +32,7 @@ $adapter = new BackblazeAdapter($client,$bucketName);
 
 $filesystem = new Filesystem($adapter);
 ```
+## *ApplicationKey is not supported yet, please use MasterKey only*
 
 ## Change log
 
