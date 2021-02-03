@@ -37,7 +37,7 @@ class BackblazeAdapterTests extends PHPUnit_Framework_TestCase
      */
     public function testHas($adapter, $mock)
     {
-        $mock->fileExists(['BucketName' => 'my_bucket', 'FileName' => 'something'])->willReturn(true);
+        $mock->fileExists(['BucketId' => null, 'BucketName' => 'my_bucket', 'FileName' => 'something'])->willReturn(true);
         $result = $adapter->has('something');
         $this->assertTrue($result);
     }
@@ -47,7 +47,7 @@ class BackblazeAdapterTests extends PHPUnit_Framework_TestCase
      */
     public function testWrite($adapter, $mock)
     {
-        $mock->upload(['BucketName' => 'my_bucket', 'FileName' => 'something', 'Body' => 'contents'])->willReturn(new File('something', '', '', '', ''), false);
+        $mock->upload(['BucketId' => null, 'BucketName' => 'my_bucket', 'FileName' => 'something', 'Body' => 'contents'])->willReturn(new File('something', '', '', '', ''), false);
         $result = $adapter->write('something', 'contents', new Config());
         $this->assertInternalType('array', $result);
         $this->assertArrayHasKey('type', $result);
@@ -59,7 +59,7 @@ class BackblazeAdapterTests extends PHPUnit_Framework_TestCase
      */
     public function testWriteStream($adapter, $mock)
     {
-        $mock->upload(['BucketName' => 'my_bucket', 'FileName' => 'something', 'Body' => 'contents'])->willReturn(new File('something', '', '', '', ''), false);
+        $mock->upload(['BucketId' => null, 'BucketName' => 'my_bucket', 'FileName' => 'something', 'Body' => 'contents'])->willReturn(new File('something', '', '', '', ''), false);
         $result = $adapter->writeStream('something', 'contents', new Config());
         $this->assertInternalType('array', $result);
         $this->assertArrayHasKey('type', $result);
@@ -71,7 +71,7 @@ class BackblazeAdapterTests extends PHPUnit_Framework_TestCase
      */
     public function testUpdate($adapter, $mock)
     {
-        $mock->upload(['BucketName' => 'my_bucket', 'FileName' => 'something', 'Body' => 'contents'])->willReturn(new File('something', '', '', '', ''), false);
+        $mock->upload(['BucketId' => null, 'BucketName' => 'my_bucket', 'FileName' => 'something', 'Body' => 'contents'])->willReturn(new File('something', '', '', '', ''), false);
         $result = $adapter->update('something', 'contents', new Config());
         $this->assertInternalType('array', $result);
         $this->assertArrayHasKey('type', $result);
@@ -83,7 +83,7 @@ class BackblazeAdapterTests extends PHPUnit_Framework_TestCase
      */
     public function testUpdateStream($adapter, $mock)
     {
-        $mock->upload(['BucketName' => 'my_bucket', 'FileName' => 'something', 'Body' => 'contents'])->willReturn(new File('something', '', '', '', ''), false);
+        $mock->upload(['BucketId' => null, 'BucketName' => 'my_bucket', 'FileName' => 'something', 'Body' => 'contents'])->willReturn(new File('something', '', '', '', ''), false);
         $result = $adapter->updateStream('something', 'contents', new Config());
         $this->assertInternalType('array', $result);
         $this->assertArrayHasKey('type', $result);
@@ -96,7 +96,7 @@ class BackblazeAdapterTests extends PHPUnit_Framework_TestCase
     public function testRead($adapter, $mock)
     {
         $file = new File('something', 'something4', '', '', '', '', 'my_bucket');
-        $mock->getFile(['BucketName' => 'my_bucket', 'FileName' => 'something'])->willReturn($file, false);
+        $mock->getFile(['BucketId' => null, 'BucketName' => 'my_bucket', 'FileName' => 'something'])->willReturn($file, false);
         $mock->download(['FileId' => 'something'])->willReturn($file, false);
         $result = $adapter->read('something');
         $this->assertEquals(['contents' => $file], $result);
@@ -148,7 +148,7 @@ class BackblazeAdapterTests extends PHPUnit_Framework_TestCase
     public function testCopy($adapter, $mock)
     {
         $this->fileSetUp();
-        $mock->upload(['BucketName' => 'my_bucket', 'FileName' => 'something_new', 'Body' => ''])->willReturn(new File('something_new', '', '', '', ''), false);
+        $mock->upload(['BucketId' => null, 'BucketName' => 'my_bucket', 'FileName' => 'something_new', 'Body' => ''])->willReturn(new File('something_new', '', '', '', ''), false);
         $result = $adapter->copy($this->file_mock->url(), 'something_new');
         $this->assertObjectHasAttribute('id', $result, 'something_new');
     }
@@ -158,7 +158,7 @@ class BackblazeAdapterTests extends PHPUnit_Framework_TestCase
      */
     public function testListContents($adapter, $mock)
     {
-        $mock->listFiles(['BucketName' => 'my_bucket'])->willReturn([new File('random_id', 'file1.txt'), new File('random_id', 'some_folder/file2.txt'), new File('random_id', 'some_folder/another_folder/file3.txt')]);
+        $mock->listFiles(['BucketId' => null, 'BucketName' => 'my_bucket'])->willReturn([new File('random_id', 'file1.txt'), new File('random_id', 'some_folder/file2.txt'), new File('random_id', 'some_folder/another_folder/file3.txt')]);
         $normalized_files = [
             [
                 'type'      => 'file',
