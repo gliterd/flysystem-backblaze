@@ -20,3 +20,9 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ### Security
 - Nothing
+
+
+## [] Unreleased
+
+### Added
+- Support for PHP 8
