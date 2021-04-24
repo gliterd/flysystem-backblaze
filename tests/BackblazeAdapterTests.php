@@ -3,8 +3,9 @@
 use BackblazeB2\File;
 use League\Flysystem\Config;
 use Mhetreramesh\Flysystem\BackblazeAdapter as Backblaze;
+use PHPUnit\Framework\TestCase;
 
-class BackblazeAdapterTests extends PHPUnit_Framework_TestCase
+class BackblazeAdapterTests extends TestCase
 {
     /**
      * @var vfsStreamDirectory
@@ -49,7 +50,7 @@ class BackblazeAdapterTests extends PHPUnit_Framework_TestCase
     {
         $mock->upload(['BucketId' => null, 'BucketName' => 'my_bucket', 'FileName' => 'something', 'Body' => 'contents'])->willReturn(new File('something', '', '', '', ''), false);
         $result = $adapter->write('something', 'contents', new Config());
-        $this->assertInternalType('array', $result);
+        $this->assertIsArray($result);
         $this->assertArrayHasKey('type', $result);
         $this->assertEquals('file', $result['type']);
     }
@@ -61,7 +62,7 @@ class BackblazeAdapterTests extends PHPUnit_Framework_TestCase
     {
         $mock->upload(['BucketId' => null, 'BucketName' => 'my_bucket', 'FileName' => 'something', 'Body' => 'contents'])->willReturn(new File('something', '', '', '', ''), false);
         $result = $adapter->writeStream('something', 'contents', new Config());
-        $this->assertInternalType('array', $result);
+        $this->assertIsArray($result);
         $this->assertArrayHasKey('type', $result);
         $this->assertEquals('file', $result['type']);
     }
@@ -73,7 +74,7 @@ class BackblazeAdapterTests extends PHPUnit_Framework_TestCase
     {
         $mock->upload(['BucketId' => null, 'BucketName' => 'my_bucket', 'FileName' => 'something', 'Body' => 'contents'])->willReturn(new File('something', '', '', '', ''), false);
         $result = $adapter->update('something', 'contents', new Config());
-        $this->assertInternalType('array', $result);
+        $this->assertIsArray($result);
         $this->assertArrayHasKey('type', $result);
         $this->assertEquals('file', $result['type']);
     }
@@ -85,7 +86,7 @@ class BackblazeAdapterTests extends PHPUnit_Framework_TestCase
     {
         $mock->upload(['BucketId' => null, 'BucketName' => 'my_bucket', 'FileName' => 'something', 'Body' => 'contents'])->willReturn(new File('something', '', '', '', ''), false);
         $result = $adapter->updateStream('something', 'contents', new Config());
-        $this->assertInternalType('array', $result);
+        $this->assertIsArray($result);
         $this->assertArrayHasKey('type', $result);
         $this->assertEquals('file', $result['type']);
     }
