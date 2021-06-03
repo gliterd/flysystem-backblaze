@@ -30,4 +30,4 @@ tools:
 build:
     environment:
         php:
-            version: 7.3
+            version: 8.0
