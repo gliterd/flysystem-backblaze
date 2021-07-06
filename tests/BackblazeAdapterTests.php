@@ -148,9 +148,9 @@ class BackblazeAdapterTests extends PHPUnit_Framework_TestCase
     public function testCopy($adapter, $mock)
     {
         $this->fileSetUp();
-        $mock->upload(['BucketId' => null, 'BucketName' => 'my_bucket', 'FileName' => 'something_new', 'Body' => ''])->willReturn(new File('something_new', '', '', '', ''), false);
-        $result = $adapter->copy($this->file_mock->url(), 'something_new');
-        $this->assertObjectHasAttribute('id', $result, 'something_new');
+        $mock->copy(['BucketId' => null, 'BucketName' => 'my_bucket', 'FileName' => 'something_old', 'SaveAs' => 'something_new'])->willReturn(new File('random_id', 'something_new', '', '', ''), false);
+        $result = $adapter->copy('something_old', 'something_new');
+        $this->assertObjectHasAttribute('id', $result);
     }
 
     /**
